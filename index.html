@@ -3,230 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIMBO | دپارتمان تخصصی لیمبو</title>
+    <title>مجموعه لیمبو | LIMBOW</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com" rel="stylesheet">
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        limbo: {
+                            green: '#aafd4b',
+                            black: '#010101',
+                            yellow: '#fcee4c',
+                            light: '#f9fafa'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root { --accent: #38bdf8; } /* رنگ پیش‌فرض: آبی لیمبونت */
-        body {
-            background-color: #050505;
-            color: white;
-            font-family: 'Vazirmatn', sans-serif;
-            scroll-behavior: smooth;
+        body { background-color: theme('colors.limbo.light'); color: theme('colors.limbo.black'); }
+        
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-color: theme('colors.limbo.green');
         }
 
-        /* استایل شیشه‌ای پیشرفته */
-        .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
+        .section-content { display: none; animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--accent);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* انیمیشن متن نئونی */
-        .neon-text {
-            text-shadow: 0 0 15px var(--accent);
-        }
-
-        /* بخش‌بندی محتوا */
-        .section-content { display: none; animation: fadeIn 0.8s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* دکمه شناور واتساپ */
-        .wa-float {
-            position: fixed;
-            bottom: 30px; left: 30px;
-            background: #25d366;
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-        }
+        /* اسکرول‌بار سفارشی */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.limbo.green'); }
     </style>
 </head>
-<body class="pb-20">
+<body class="pb-10 font-sans antialiased relative min-h-screen flex flex-col">
 
-    <!-- Background Glow -->
-    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-sky-600/10 blur-[120px] rounded-full"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 blur-[120px] rounded-full"></div>
-
-    <header class="pt-20 pb-10 text-center">
-        <h1 class="text-7xl font-extrabold tracking-tighter mb-4">
-            <span class="italic">LIMBO</span><span style="color: var(--accent)">.</span>
-        </h1>
-        <p class="text-gray-500 tracking-[0.3em] uppercase text-sm">Design • Print • Network</p>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center gap-3">
+                   <div class="w-16 h-16 bg-limbo-white rounded-2xl flex items-center justify-center overflow-hidden border-2 border-limbo-green">
+  <img 
+    src="./logo.png" 
+    alt="لوگو لیمبو" 
+    class="w-full h-full object-cover"
+  >
+</div>
+                    <div>
+                        <h1 class="text-2xl font-black tracking-tight">LIMBOW</h1>
+                        <p class="text-xs text-gray-500">مجموعه خدمات یکپارچه لیمبو</p>
+                    </div>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 bg-limbo-black text-white px-5 py-2.5 rounded-full hover:bg-gray-800 transition-colors text-sm font-medium">
+                    <i class="fas fa-credit-card text-limbo-yellow"></i>
+                    پرداخت آنلاین
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow mt-10">
         
-        <!-- Navigation Grid (The Big 3) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            <div onclick="openSection('net', '#38bdf8')" class="glass p-10 text-center cursor-pointer group">
-                <i class="fas fa-microchip text-4xl mb-6 text-sky-400 group-hover:scale-110 transition-transform"></i>
-                <h2 class="text-2xl font-bold italic">لیمبو نت</h2>
-                <p class="text-xs text-gray-500 mt-2 uppercase">e-Government Services</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div onclick="openSection('net')" class="glass-card p-8 text-center cursor-pointer group border-b-4 border-b-transparent hover:border-b-limbo-green relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-limbo-green opacity-10 rounded-bl-full transition-all group-hover:scale-110"></div>
+                <i class="fas fa-wifi text-4xl mb-4 text-limbo-black group-hover:text-limbo-green transition-colors"></i>
+                <h2 class="text-2xl font-bold mb-1">لیمبو نت</h2>
+                <p class="text-sm text-gray-500">خدمات الکترونیک و کافی‌نت</p>
             </div>
             
-            <div onclick="openSection('graphic', '#f471b5')" class="glass p-10 text-center cursor-pointer group">
-                <i class="fas fa-bezier-curve text-4xl mb-6 text-pink-400 group-hover:scale-110 transition-transform"></i>
-                <h2 class="text-2xl font-bold italic">لیمبو گرافیک</h2>
-                <p class="text-xs text-gray-500 mt-2 uppercase">Brand Identity Design</p>
+            <div onclick="openSection('graphic')" class="glass-card p-8 text-center cursor-pointer group border-b-4 border-b-transparent hover:border-b-limbo-yellow relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-limbo-yellow opacity-10 rounded-bl-full transition-all group-hover:scale-110"></div>
+                <i class="fas fa-bezier-curve text-4xl mb-4 text-limbo-black group-hover:text-limbo-yellow transition-colors"></i>
+                <h2 class="text-2xl font-bold mb-1">لیمبو گرافیک</h2>
+                <p class="text-sm text-gray-500">طراحی هویت بصری و چاپ</p>
             </div>
 
-            <div onclick="openSection('print', '#fbbf24')" class="glass p-10 text-center cursor-pointer group">
-                <i class="fas fa-layers-group text-4xl mb-6 text-amber-400 group-hover:scale-110 transition-transform"></i>
-                <h2 class="text-2xl font-bold italic">لیمبو چاپ</h2>
-                <p class="text-xs text-gray-500 mt-2 uppercase">Premium Print House</p>
+            <div class="glass-card p-8 text-center relative overflow-hidden opacity-70 cursor-not-allowed">
+                <div class="absolute inset-0 bg-gray-50/50 backdrop-blur-[1px] flex flex-col justify-center items-center z-10">
+                    <span class="bg-limbo-black text-white px-4 py-1 rounded-full text-xs font-bold mb-2">به‌زودی</span>
+                </div>
+                <i class="fas fa-store text-4xl mb-4 text-gray-400"></i>
+                <h2 class="text-2xl font-bold mb-1 text-gray-400">لیمبو شاپ</h2>
+                <p class="text-sm text-gray-400">فروشگاه آنلاین محصولات</p>
             </div>
         </div>
 
-        <!-- 1. SECTION: LIMBO NET -->
-        <section id="net" class="section-content">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Sakha -->
-                <button onclick="showDocs('سخا', 'سخا (خدمات انتظامی)', 'شماره همراه، کدپستی، شماره ملی، کارت بانکی (پرداخت در سایت)')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-user-shield text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">سخا</span>
-                </button>
-                <!-- Amalak -->
-                <button onclick="showDocs('املاک', 'سامانه املاک و اسکان', 'شماره همراه بنام، کدپستی، شماره مالک، شناسه قبض برق')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-building-user text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">املاک و اسکان</span>
-                </button>
-                <!-- Judicial -->
-                <button onclick="showDocs('ابلاغ', 'ابلاغ قضایی', 'شماره ملی، رمز شخصی (ثنا)، شماره موبایل بنام')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-gavel text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">ابلاغ قضایی</span>
-                </button>
-                <!-- Economic Code -->
-                <button onclick="showDocs('کد اقتصادی', 'دریافت کد اقتصادی', 'کدپستی، شماره همراه، شماره شبا')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-briefcase text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">کد اقتصادی</span>
-                </button>
-                <!-- Marriage Loan -->
-                <button onclick="showDocs('وام ازدواج', 'ثبت نام وام ازدواج', 'شماره ملی، شماره همراه سرپرست، تاریخ دقیق ازدواج')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-heart text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">وام ازدواج</span>
-                </button>
-                <!-- Child Loan -->
-                <button onclick="showDocs('فرزندآوری', 'وام فرزندآوری', 'شماره ملی و همراه سرپرست، کد ملی فرزند آخر')" class="glass p-8 flex flex-col items-center">
-                    <i class="fas fa-baby text-2xl mb-4 opacity-50"></i>
-                    <span class="font-medium text-sm">وام فرزندآوری</span>
-                </button>
-                <!-- Coming Soon -->
-                <div class="glass p-8 flex flex-col items-center opacity-30 italic text-xs">
-                    <span>مابقی به‌زودی...</span>
+        <section id="net" class="section-content block">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+                <h3 class="text-xl font-bold border-r-4 border-limbo-green pr-3">خدمات الکترونیک لیمبو نت</h3>
+                
+                <div class="relative w-full md:w-96">
+                    <input type="text" id="searchInput" onkeyup="renderServices()" placeholder="جستجوی خدمات (مثلا: سخا، خودرو...)" 
+                           class="w-full bg-white border border-gray-200 rounded-full py-3 px-5 pl-12 focus:outline-none focus:border-limbo-green focus:ring-1 focus:ring-limbo-green transition-all shadow-sm">
+                    <i class="fas fa-search absolute left-5 top-3.5 text-gray-400"></i>
                 </div>
             </div>
+
+            <div id="services-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                </div>
         </section>
 
-        <!-- 2. SECTION: LIMBO GRAPHIC -->
-        <section id="graphic" class="section-content">
-            <div class="glass p-12 text-center mb-10 border-pink-500/20">
-                <h3 class="text-3xl font-black mb-6 italic text-pink-400 uppercase">ما هویت می‌سازیم</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-                    <div class="space-y-4">
-                        <p class="flex items-center gap-3"><i class="fas fa-check text-pink-500"></i> طراحی لوگو و نشانه</p>
-                        <p class="flex items-center gap-3"><i class="fas fa-check text-pink-500"></i> طراحی ست اداری حرفه‌ای</p>
-                    </div>
-                    <div class="space-y-4">
-                        <p class="flex items-center gap-3"><i class="fas fa-check text-pink-500"></i> پوستر و بنرهای تبلیغاتی</p>
-                        <p class="flex items-center gap-3"><i class="fas fa-check text-pink-500"></i> طراحی رابط کاربری (UI/UX)</p>
-                    </div>
+        <section id="graphic" class="section-content hidden">
+            <div class="bg-limbo-yellow/10 rounded-3xl p-8 md:p-12 text-center border border-limbo-yellow/30">
+                <i class="fas fa-paint-brush text-5xl text-limbo-black mb-6"></i>
+                <h3 class="text-3xl font-black mb-4">ایده‌های شما، طراحی ما</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+                    در لیمبو گرافیک، ما به برند شما هویت می‌بخشیم. از طراحی لوگو و ست اداری گرفته تا بنرهای تبلیغاتی و طراحی رابط کاربری (UI/UX).
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm font-medium">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">طراحی لوگو</div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">ست اداری</div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">تراکت و پوستر</div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">طراحی UI/UX</div>
                 </div>
-                <a href="https://wa.me طراحی گرافیک دارم" class="inline-block mt-10 px-10 py-4 bg-pink-600 rounded-full font-bold hover:bg-pink-500 transition-colors">استعلام قیمت طراحی</a>
-            </div>
-        </section>
-
-        <!-- 3. SECTION: LIMBO PRINT -->
-        <section id="print" class="section-content">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass p-6 text-center border-amber-500/20">
-                    <i class="fas fa-id-card text-2xl mb-4 text-amber-500"></i>
-                    <h4 class="font-bold mb-2">کارت ویزیت</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">لمینت، سلفون، یووی موضعی و انواع کارت‌های فانتزی</p>
-                </div>
-                <div class="glass p-6 text-center border-amber-500/20">
-                    <i class="fas fa-file-invoice text-2xl mb-4 text-amber-500"></i>
-                    <h4 class="font-bold mb-2">تراکت و بروشور</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">چاپ افست و دیجیتال فوری با بالاترین کیفیت رنگ</p>
-                </div>
-                <div class="glass p-6 text-center border-amber-500/20">
-                    <i class="fas fa-box-open text-2xl mb-4 text-amber-500"></i>
-                    <h4 class="font-bold mb-2">بسته‌بندی</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">طراحی و چاپ جعبه، ساک دستی و لیبل محصولات</p>
-                </div>
+                <a href="https://wa.me/989177364792?text=سلام برای مشاوره طراحی گرافیک پیام میدم" class="inline-block bg-limbo-black text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition-colors">
+                    مشاوره و استعلام قیمت
+                </a>
             </div>
         </section>
 
     </main>
 
-    <!-- Modal System -->
-    <div id="modal" class="fixed inset-0 bg-black/95 backdrop-blur-2xl z-[2000] hidden items-center justify-center p-6">
-        <div class="glass max-w-lg w-full p-10 border-white/10" onclick="event.stopPropagation()">
-            <h2 id="m-title" class="text-3xl font-black mb-2 italic tracking-tight"></h2>
-            <p id="m-subtitle" class="text-xs text-gray-500 mb-8 uppercase tracking-widest"></p>
-            <div class="bg-white/5 p-6 rounded-3xl mb-8">
-                <p class="text-xs text-gray-500 mb-4 uppercase">مدارک مورد نیاز:</p>
-                <div id="m-body" class="text-lg leading-relaxed text-gray-200"></div>
+    <footer class="bg-white border-t border-gray-100 mt-20 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-lg mb-4">تماس با لیمبو</h4>
+                <p class="text-sm text-gray-600 mb-2 flex items-center gap-2"><i class="fas fa-map-marker-alt text-limbo-green w-5"></i> بندرعباس، فلکه برق، بلوار بهشتی، خیابان خبرنگار، پاساژ امام رضا، مجموعه لیمبو</p>
+                <p class="text-sm text-gray-600 flex items-center gap-2"><i class="fas fa-phone text-limbo-green w-5"></i> ۰۹۱۷۷۳۶۴۷۹۲</p>
             </div>
-            <button onclick="sendToWA()" class="w-full py-5 bg-white text-black font-black rounded-2xl hover:bg-gray-200 transition-all flex items-center justify-center gap-3">
-                <i class="fab fa-whatsapp text-2xl"></i>
-                ارسال مدارک در واتساپ
-            </button>
-            <button onclick="closeModal()" class="w-full mt-4 text-gray-600 text-sm">انصراف و بازگشت</button>
+            <div class="text-center md:text-right">
+                <h4 class="font-bold text-lg mb-4">دسترسی سریع</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li><a href="#" class="hover:text-limbo-green">پرداخت آنلاین</a></li>
+                    <li><a href="https://rubika.ir/limbow33" target="_blank" class="hover:text-limbo-green">کانال روبیکا</a></li>
+                    <li><a href="https://wa.me/989177364792" target="_blank" class="hover:text-limbo-green">پشتیبانی واتساپ</a></li>
+                </ul>
+            </div>
+            <div class="flex justify-center md:justify-end items-center">
+                <div class="w-24 h-24 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-center p-2">
+                    <span class="text-[10px] text-gray-400 text-center">جایگاه<br>اینماد</span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-400 mt-8">
+            © 2024 Limbow. All rights reserved.
+        </div>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[2000] hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal()">
+        <div class="bg-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <h2 id="m-title" class="text-2xl font-black text-limbo-black"></h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-red-500 transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="bg-limbo-light p-5 rounded-2xl mb-6 border border-gray-100">
+                <p class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">مدارک مورد نیاز:</p>
+                <ul id="m-body" class="text-sm leading-relaxed text-gray-700 space-y-2 list-disc list-inside"></ul>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="sendRequest('whatsapp')" class="w-full py-3.5 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#1ebd5a] transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-200">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    ثبت درخواست در واتساپ
+                </button>
+                <button onclick="sendRequest('rubika')" class="w-full py-3.5 bg-[#9A3BBA] text-white font-bold rounded-xl hover:bg-[#832fa0] transition-all flex items-center justify-center gap-2 shadow-lg shadow-purple-200">
+                    <i class="fas fa-paper-plane text-xl"></i> ثبت درخواست در روبیکا
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Global WA Button -->
-    <a href="https://wa.me" class="wa-float text-white text-3xl">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="md:hidden fixed bottom-4 left-4 right-4 z-40">
+        <a href="#" class="flex justify-center items-center gap-2 bg-limbo-black text-white px-5 py-3.5 rounded-2xl shadow-xl font-medium">
+            <i class="fas fa-credit-card text-limbo-yellow"></i>
+            پرداخت آنلاین مبلغ
+        </a>
+    </div>
 
     <script>
-        let currentItem = "";
+        // ==========================================
+        // پایگاه داده خدمات (مدیریت آسان خدمات لیمبو نت)
+        // برای افزودن خدمت جدید، یک خط به این لیست اضافه کنید.
+        // ==========================================
+        const servicesData = [
+            { title: "سخا", docs: ["شماره همراه", "کدپستی", "شماره ملی", "پرداختی سایت"], icon: "fa-shield-halved" },
+            { title: "املاک و اسکان", docs: ["شماره همراه به نام شخص", "کدپستی", "شماره ملی مالک", "شناسه برق منزل"], icon: "fa-house-user" },
+            { title: "ابلاغ قضایی", docs: ["شماره ملی", "رمز شخصی (ثنا)", "شماره همراه به نام شخص", "در صورت فراموشی رمز، سریال شناسنامه الزامیست"], icon: "fa-gavel" },
+            { title: "کد اقتصادی", docs: ["کد پستی", "شماره همراه به نام شخص", "شماره شبای حساب بانکی"], icon: "fa-file-invoice-dollar" },
+            { title: "ثبتنام ایرانخودرو", docs: ["شماره همراه به نام شخص", "شماره ملی", "اطلاعات شناسنامه", "کدپستی"], icon: "fa-car" },
+            { title: "وام ازدواج", docs: ["شماره ملی", "شماره همراه به نام سرپرست", "تاریخ ازدواج"], icon: "fa-ring" },
+            { title: "وام فرزندآوری", docs: ["شماره ملی سرپرست", "شماره همراه سرپرست", "کد ملی فرزند آخر"], icon: "fa-baby" },
+            { title: "تعویض پلاک", docs: ["شماره همراه به نام شخص", "شماره ملی", "پرداخت خلافی و عوارض", "معاینه فنی", "هزینه نقل و انتقال"], icon: "fa-id-card" },
+            { title: "مسکن ملی", docs: ["شماره همراه به نام شخص", "شماره ملی", "مدارک تمام اعضای خانواده", "گواهی سکونت"], icon: "fa-building" },
+            { title: "قرارداد مسکن", docs: ["کد رهگیری مالک", "شماره همراه مالک و مستاجر", "کدپستی و شناسه قبض", "دو نفر شاهد", "کدملی مستاجر"], icon: "fa-file-signature" },
+            { title: "ثبتنام کتاب درسی", docs: ["شماره ملی", "سریال شناسنامه"], icon: "fa-book" },
+            { title: "سوء پیشینه", docs: ["شماره ملی", "رمز شخصی ثنا"], icon: "fa-fingerprint" },
+            { title: "خلافی خودرو", docs: ["شماره موبایل", "پلاک خودرو", "شماره ملی مالک"], icon: "fa-file-invoice" },
+            { title: "پرداخت حق بیمه", docs: ["شماره موبایل به نام افراد حقیقی"], icon: "fa-heart-pulse" },
+            { title: "بیمه ورزشی", docs: ["شماره موبایل", "شماره ملی"], icon: "fa-volleyball" },
+            { title: "یارانه", docs: ["اطلاعات سرپرست خانوار", "شماره حساب مرتبط", "لطفا برای جزئیات تماس بگیرید"], icon: "fa-users" },
+            { title: "سجام", docs: ["شماره همراه به نام شخص", "کدپستی", "شناسنامه و کارت ملی", "شماره شبا و شماره حساب", "آدرس"], icon: "fa-chart-line" },
+            { title: "جواز کسب", docs: ["لطفا جهت دریافت لیست مدارک تماس بگیرید"], icon: "fa-store" },
+            { title: "اظهارنامه مالیاتی", docs: ["لطفا جهت بررسی پرونده و مدارک تماس بگیرید"], icon: "fa-calculator" }
+        ];
 
-        function openSection(id, color) {
-            // مخفی کردن همه سکشن‌ها
-            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
-            // نمایش سکشن انتخابی
-            const target = document.getElementById(id);
-            target.style.display = 'block';
-            // تغییر رنگ تم سایت
-            document.documentElement.style.setProperty('--accent', color);
-            // اسکرول نرم
-            window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+        let currentActiveService = "";
+
+        // تابع تغییر تب‌ها (گرافیک و نت)
+        function openSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
         }
 
-        function showDocs(title, subtitle, docs) {
-            currentItem = title;
-            document.getElementById('m-title').innerText = title;
-            document.getElementById('m-title').style.color = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-            document.getElementById('m-subtitle').innerText = subtitle;
-            document.getElementById('m-body').innerText = docs;
-            document.getElementById('modal').style.display = 'flex';
+        // تابع رندر کردن کارت‌های خدمات (با قابلیت جستجو)
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            grid.innerHTML = ""; // پاک کردن محتوای قبلی
+
+            const filteredServices = servicesData.filter(srv => srv.title.toLowerCase().includes(searchTerm));
+
+            filteredServices.forEach(srv => {
+                const card = document.createElement('div');
+                card.className = "glass-card p-6 flex flex-col items-center text-center cursor-pointer hover:bg-limbo-green/5";
+                card.onclick = () => openModal(srv);
+                
+                card.innerHTML = `
+                    <div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center mb-3">
+                        <i class="fas ${srv.icon} text-xl text-limbo-black"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">${srv.title}</h4>
+                `;
+                grid.appendChild(card);
+            });
+
+            // اضافه کردن کارت "سایر خدمات" در انتهای لیست
+            const otherCard = document.createElement('div');
+            otherCard.className = "glass-card p-6 flex flex-col items-center text-center cursor-pointer bg-limbo-yellow/10 border border-limbo-yellow/30";
+            otherCard.onclick = () => {
+                openModal({ title: "خدمت من در لیست نیست", docs: ["لطفاً عنوان خدمت مورد نظر خود را در پیام‌رسان‌ها برای ما ارسال کنید تا کارشناسان لیمبو شما را راهنمایی کنند."] });
+            };
+            otherCard.innerHTML = `
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-3 text-limbo-yellow">
+                    <i class="fas fa-headset text-xl"></i>
+                </div>
+                <h4 class="font-bold text-sm text-gray-800">خدمت دیگری می‌خواهم</h4>
+                <p class="text-[10px] text-gray-500 mt-1">تماس با پشتیبانی</p>
+            `;
+            grid.appendChild(otherCard);
+        }
+
+        // توابع مربوط به مودال (پنجره بازشو)
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(service) {
+            currentActiveService = service.title;
+            document.getElementById('m-title').innerText = service.title;
+            
+            const ul = document.getElementById('m-body');
+            ul.innerHTML = "";
+            service.docs.forEach(doc => {
+                const li = document.createElement('li');
+                li.innerText = doc;
+                ul.appendChild(li);
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // تاخیر کوچک برای اجرای انیمیشن
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
         }
 
-        function sendToWA() {
-            const phone = "989177364792"; // شماره خودت رو بذار
-            const text = encodeURIComponent(`سلام لیمبو عزیز، مدارک مربوط به "${currentItem}" را آماده کردم.`);
-            window.open(`https://wa.me{phone}?text=${text}`, '_blank');
+        // ارسال درخواست به واتساپ یا روبیکا
+        function sendRequest(platform) {
+            const text = encodeURIComponent(`سلام لیمبو عزیز، برای انجام "${currentActiveService}" پیام می‌دهم. مدارک لازم را آماده کرده‌ام.`);
+            if (platform === 'whatsapp') {
+                window.open(`https://wa.me/989177364792?text=${text}`, '_blank');
+            } else if (platform === 'rubika') {
+                // لینک مستقیم به آیدی روبیکا (روبیکا امکان پاس دادن مستقیم متن به چت را در لینک‌های تحت وب ندارد)
+                window.open(`https://rubika.ir/limbow33`, '_blank');
+            }
         }
+
+        // بارگذاری اولیه لیست خدمات
+        renderServices();
     </script>
 </body>
 </html>
